@@ -47,10 +47,12 @@ US_PROFILE = MarketProfile(
         "美股 大盘",
         "US stock market",
         "S&P 500 NASDAQ",
+        "US stock sector rotation",
+        "美股 板块 轮动",
     ],
     prompt_index_hint="分析标普500、纳斯达克、道指等各指数走势特点",
     has_market_stats=False,
-    has_sector_rankings=False,
+    has_sector_rankings=True,
 )
 
 HK_PROFILE = MarketProfile(

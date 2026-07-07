@@ -438,10 +438,13 @@ Focus on index trend, liquidity, and sector rotation to shape the next-session t
         if self.profile.has_market_stats:
             self._get_market_statistics(overview)
 
-        # 3. 获取板块涨跌榜（A 股有，美股暂无）
+        # 3. 获取板块涨跌榜（A 股有行业板块，美股使用行业 ETF）
         if self.profile.has_sector_rankings:
-            self._get_sector_rankings(overview)
-            self._get_concept_rankings(overview)
+            if self.region == "us":
+                self._get_us_sector_data(overview)
+            else:
+                self._get_sector_rankings(overview)
+                self._get_concept_rankings(overview)
         
         # 4. 获取北向资金（可选）
         # self._get_north_flow(overview)
@@ -568,7 +571,35 @@ Focus on index trend, liquidity, and sector rotation to shape the next-session t
 
         except Exception as e:
             logger.warning("[大盘] %s action=get_concept_rankings status=failed error=%s", self._log_context(), e)
-    
+
+    def _get_us_sector_data(self, overview: MarketOverview):
+        """获取美股板块 ETF 涨跌幅排名数据（用于板块轮动分析）。"""
+        try:
+            logger.info("[大盘] %s action=get_us_sector_data status=start", self._log_context())
+
+            from data_provider.us_sector_etf import (
+                get_us_sector_performance,
+                format_sector_ranking_summary,
+            )
+
+            sectors = get_us_sector_performance()
+            if sectors and sectors.get("top"):
+                overview.top_sectors = sectors["top"]
+                overview.bottom_sectors = sectors.get("bottom", [])
+
+                logger.info(
+                    "[大盘] %s action=get_us_sector_data status=success "
+                    "top=%s bottom=%s",
+                    self._log_context(),
+                    format_sector_ranking_summary(sectors.get("top", []), limit=5),
+                    format_sector_ranking_summary(sectors.get("bottom", []), limit=5),
+                )
+            else:
+                logger.info("[大盘] %s action=get_us_sector_data status=empty", self._log_context())
+
+        except Exception as e:
+            logger.warning("[大盘] %s action=get_us_sector_data status=failed error=%s", self._log_context(), e)
+
     # def _get_north_flow(self, overview: MarketOverview):
     #     """获取北向资金流入"""
     #     try:
