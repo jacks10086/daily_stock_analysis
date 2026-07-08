@@ -121,14 +121,25 @@ def get_us_sector_performance(
         logger.info("[USSector] action=fetch_sector_data status=success shape=%s", df.shape)
 
         sectors = []
-        # yfinance.download 返回多层索引，列顺序为 (OHLCV, Ticker)
-        # 所以 ticker 在 columns.levels[1] 中
+        # yfinance.download 返回两种格式：
+        # 1. MultiIndex: columns.levels[1] 包含 ticker
+        # 2. 扁平格式: 列名为 "Close_XLK", "Volume_XLK" 等
+        is_multi_index = hasattr(df.columns, "levels") and len(df.columns.levels) > 1
+
         for ticker in tickers:
             try:
-                if hasattr(df.columns, "levels") and ticker in df.columns.levels[1]:
+                if is_multi_index and ticker in df.columns.levels[1]:
+                    # MultiIndex 格式
                     ticker_df = df.xs(ticker, level=1, axis=1)
+                    close_col = "Close"
+                    volume_col = "Volume"
                 else:
-                    # 单个 ticker 或扁平 DataFrame
+                    # 扁平格式: 列名为 "Close_XLK", "Volume_XLK"
+                    close_col = f"Close_{ticker}"
+                    volume_col = f"Volume_{ticker}"
+                    if close_col not in df.columns:
+                        logger.debug("[USSector] ticker=%s 列 %s 不存在，跳过", ticker, close_col)
+                        continue
                     ticker_df = df
 
                 if ticker_df.empty:
@@ -136,7 +147,7 @@ def get_us_sector_performance(
                     continue
 
                 # 取最新的非空 close 行
-                valid_rows = ticker_df["Close"].dropna()
+                valid_rows = ticker_df[close_col].dropna()
                 if valid_rows.empty:
                     logger.debug("[USSector] ticker=%s Close 列无有效数据，跳过", ticker)
                     continue
@@ -162,7 +173,7 @@ def get_us_sector_performance(
                 )
                 # 添加 volume（可选字段）
                 try:
-                    vol = ticker_df["Volume"].dropna()
+                    vol = ticker_df[volume_col].dropna()
                     if not vol.empty:
                         sector_item["volume"] = int(vol.iloc[-1])
                 except (KeyError, IndexError, TypeError, ValueError):

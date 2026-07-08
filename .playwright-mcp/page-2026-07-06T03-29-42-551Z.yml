@@ -1,0 +1,31 @@
+- generic [ref=e2]:
+  - region "Notifications (F8)":
+    - list
+  - region "Notifications alt+T"
+  - navigation [ref=e3]:
+    - generic [ref=e5]:
+      - link "CC Switch Logo CC Switch" [ref=e6] [cursor=pointer]:
+        - /url: /zh/
+        - img "CC Switch Logo" [ref=e7]
+        - generic [ref=e8]: CC Switch
+      - generic [ref=e10]:
+        - link "首页" [ref=e11] [cursor=pointer]:
+          - /url: /zh/
+        - link "文档" [ref=e12] [cursor=pointer]:
+          - /url: /zh/docs
+        - link "攻略" [ref=e13] [cursor=pointer]:
+          - /url: /zh/tutorials
+        - link "更新日志" [ref=e14] [cursor=pointer]:
+          - /url: /zh/changelog
+        - link "赞助商" [ref=e15] [cursor=pointer]:
+          - /url: /zh/sponsors
+      - generic [ref=e16]:
+        - 'button "Select language (current: 中文)" [ref=e18] [cursor=pointer]':
+          - img [ref=e19]
+          - generic [ref=e22]: 🇨🇳
+        - button "Toggle theme" [ref=e23] [cursor=pointer]:
+          - img [ref=e25]
+        - link "GitHub repository (opens in new tab)" [ref=e27] [cursor=pointer]:
+          - /url: https://github.com/farion1231/cc-switch
+          - img [ref=e28]
+  - generic [ref=e31]: 加载中...

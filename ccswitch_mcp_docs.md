@@ -1,0 +1,434 @@
+- generic [ref=e2] [box=0,0,1021,7957]:
+  - region "Notifications (F8)" [box=0,0,1021,0]:
+    - list [box=601,638,420,32]
+  - region "Notifications alt+T" [box=0,0,1021,0]
+  - navigation [ref=e3] [box=0,0,1021,80]:
+    - generic [ref=e5] [box=24,0,973,80]:
+      - link "CC Switch Logo CC Switch" [ref=e6] [cursor=pointer] [box=24,20,180,40]:
+        - /url: /zh/
+        - img "CC Switch Logo" [ref=e7] [box=24,20,40,40]
+        - generic [ref=e8] [box=76,26,101,28]: CC Switch
+      - generic [ref=e10] [box=236,28,336,24]:
+        - link "首页" [ref=e11] [cursor=pointer] [box=236,28,32,24]:
+          - /url: /zh/
+        - link "文档" [ref=e12] [cursor=pointer] [box=300,28,32,24]:
+          - /url: /zh/docs
+        - link "攻略" [ref=e13] [cursor=pointer] [box=364,28,32,24]:
+          - /url: /zh/tutorials
+        - link "更新日志" [ref=e14] [cursor=pointer] [box=428,28,64,24]:
+          - /url: /zh/changelog
+        - link "赞助商" [ref=e15] [cursor=pointer] [box=524,28,48,24]:
+          - /url: /zh/sponsors
+      - generic [ref=e16] [box=864,22,133,36]:
+        - 'button "Select language (current: 中文)" [ref=e18] [cursor=pointer] [box=864,24,53,32]':
+          - img [ref=e19] [box=872,32,16,16]
+          - generic [ref=e22] [box=894,30,15,20]: 🇨🇳
+        - button "Toggle theme" [ref=e23] [cursor=pointer] [box=929,22,36,36]:
+          - img [ref=e25] [box=937,30,20,20]
+        - link "GitHub repository (opens in new tab)" [ref=e27] [cursor=pointer] [box=977,30,20,20]:
+          - /url: https://github.com/farion1231/cc-switch
+          - img [ref=e28] [box=977,30,20,20]
+  - generic [ref=e32] [box=0,0,1021,7957]:
+    - generic [ref=e35] [box=16,96,989,7411]:
+      - generic [ref=e36] [box=16,120,288,7363]:
+        - button "搜索文档... ⌘K" [ref=e37] [cursor=pointer] [box=16,120,288,43]:
+          - img [ref=e38] [box=29,134,16,16]
+          - generic [ref=e41] [box=53,132,198,20]: 搜索文档...
+          - generic [ref=e42] [box=258,131,33,22]: ⌘K
+        - complementary [ref=e43] [box=16,179,288,408]:
+          - navigation [ref=e44] [box=16,179,288,408]:
+            - button "快速入门" [ref=e46] [cursor=pointer] [box=16,179,288,40]:
+              - img [ref=e48] [box=28,191,16,16]
+              - generic [ref=e53] [box=56,189,208,20]: 快速入门
+              - img [ref=e55] [box=276,191,16,16]
+            - button "供应商管理" [ref=e58] [cursor=pointer] [box=16,223,288,40]:
+              - img [ref=e60] [box=28,235,16,16]
+              - generic [ref=e65] [box=56,233,208,20]: 供应商管理
+              - img [ref=e67] [box=276,235,16,16]
+            - generic [ref=e69] [box=16,267,288,232]:
+              - button "扩展功能" [ref=e70] [cursor=pointer] [box=16,267,288,40]:
+                - img [ref=e72] [box=28,279,16,16]
+                - generic [ref=e74] [box=56,277,208,20]: 扩展功能
+                - img [ref=e76] [box=276,279,16,16]
+              - generic [ref=e79] [box=40,311,264,188]:
+                - button "MCP 服务器" [ref=e80] [cursor=pointer] [box=53,311,251,36]
+                - button "Prompts 提示词" [ref=e81] [cursor=pointer] [box=53,349,251,36]
+                - button "Skills 技能" [ref=e82] [cursor=pointer] [box=53,387,251,36]
+                - button "会话管理器" [ref=e83] [cursor=pointer] [box=53,425,251,36]
+                - button "工作区与记忆" [ref=e84] [cursor=pointer] [box=53,463,251,36]
+            - button "本地路由与高可用" [ref=e86] [cursor=pointer] [box=16,503,288,40]:
+              - img [ref=e88] [box=28,515,16,16]
+              - generic [ref=e91] [box=56,513,208,20]: 本地路由与高可用
+              - img [ref=e93] [box=276,515,16,16]
+            - button "常见问题" [ref=e96] [cursor=pointer] [box=16,547,288,40]:
+              - img [ref=e98] [box=28,559,16,16]
+              - generic [ref=e101] [box=56,557,208,20]: 常见问题
+              - img [ref=e103] [box=276,559,16,16]
+      - main [ref=e105] [box=336,120,669,7363]:
+        - article [ref=e106] [box=336,120,669,7363]:
+          - generic [ref=e108] [box=336,120,669,7125]:
+            - heading "3.1 MCP 服务器管理" [level=1] [ref=e109] [box=336,120,669,57]
+            - heading "什么是 MCP" [level=2] [ref=e110] [box=336,217,669,36]
+            - paragraph [ref=e111] [box=336,269,669,56]: MCP (Model Context Protocol) 是一种协议，允许 AI 工具访问外部数据源和工具。通过 MCP 服务器，你可以让 AI：
+            - list [ref=e112] [box=360,341,645,136]:
+              - listitem [ref=e113] [box=360,341,645,28]: 访问文件系统
+              - listitem [ref=e114] [box=360,377,645,28]: 执行网络请求
+              - listitem [ref=e115] [box=360,413,645,28]: 查询数据库
+              - listitem [ref=e116] [box=360,449,645,28]: 调用外部 API
+            - heading "打开 MCP 面板" [level=2] [ref=e117] [box=336,517,669,36]
+            - paragraph [ref=e118] [box=336,569,669,28]:
+              - text: 点击顶部导航栏的
+              - strong [ref=e119] [box=469,573,37,19]: MCP
+              - text: 按钮。
+            - heading "面板概览" [level=2] [ref=e120] [box=336,637,669,36]
+            - paragraph [ref=e121] [box=336,697,669,457]:
+              - img "image-20260108005723522" [ref=e122] [box=336,697,669,457]
+            - heading "添加 MCP 服务器" [level=2] [ref=e123] [box=336,1194,669,36]
+            - heading "使用预设模板" [level=3] [ref=e124] [box=336,1262,669,32]
+            - list [ref=e125] [box=360,1306,645,136]:
+              - listitem [ref=e126] [box=360,1306,645,28]:
+                - text: 点击右上角
+                - strong [ref=e127] [box=445,1310,11,19]: +
+                - text: 按钮
+              - listitem [ref=e128] [box=360,1342,645,28]: 在「预设」下拉框中选择模板
+              - listitem [ref=e129] [box=360,1378,645,28]: 根据需要修改配置
+              - listitem [ref=e130] [box=360,1414,645,28]: 点击「保存」
+            - paragraph [ref=e131] [box=336,1466,669,457]:
+              - img "image-20260108005739731" [ref=e132] [box=336,1466,669,457]
+            - heading "常用预设" [level=3] [ref=e133] [box=336,1954,669,32]
+            - table [ref=e135] [box=337,1999,923,293]:
+              - rowgroup [ref=e136] [box=337,1999,923,48]:
+                - row "预设 包名 功能说明" [ref=e137] [box=337,1999,923,48]:
+                  - columnheader "预设" [ref=e138] [box=337,1999,177,48]
+                  - columnheader "包名" [ref=e139] [box=514,1999,419,48]
+                  - columnheader "功能说明" [ref=e140] [box=933,1999,328,48]
+              - rowgroup [ref=e141] [box=337,2047,923,244]:
+                - row "fetch mcp-server-fetch HTTP 请求工具，让 AI 能够获取网页内容" [ref=e142] [box=337,2047,923,49]:
+                  - cell "fetch" [ref=e143] [box=337,2047,177,49]
+                  - cell "mcp-server-fetch" [ref=e144] [box=514,2047,419,49]
+                  - cell "HTTP 请求工具，让 AI 能够获取网页内容" [ref=e145] [box=933,2047,328,49]
+                - row "time @modelcontextprotocol/server-time 时间工具，提供当前时间信息" [ref=e146] [box=337,2096,923,49]:
+                  - cell "time" [ref=e147] [box=337,2096,177,49]
+                  - cell "@modelcontextprotocol/server-time" [ref=e148] [box=514,2096,419,49]
+                  - cell "时间工具，提供当前时间信息" [ref=e149] [box=933,2096,328,49]
+                - row "memory @modelcontextprotocol/server-memory 记忆工具，让 AI 能够存储和检索信息" [ref=e150] [box=337,2145,923,49]:
+                  - cell "memory" [ref=e151] [box=337,2145,177,49]
+                  - cell "@modelcontextprotocol/server-memory" [ref=e152] [box=514,2145,419,49]
+                  - cell "记忆工具，让 AI 能够存储和检索信息" [ref=e153] [box=933,2145,328,49]
+                - row "sequential-thinking @modelcontextprotocol/server-sequential-thinking 思维链工具，增强 AI 推理能力" [ref=e154] [box=337,2194,923,49]:
+                  - cell "sequential-thinking" [ref=e155] [box=337,2194,177,49]
+                  - cell "@modelcontextprotocol/server-sequential-thinking" [ref=e156] [box=514,2194,419,49]
+                  - cell "思维链工具，增强 AI 推理能力" [ref=e157] [box=933,2194,328,49]
+                - row "context7 @upstash/context7-mcp 文档搜索工具，查询技术文档" [ref=e158] [box=337,2243,923,49]:
+                  - cell "context7" [ref=e159] [box=337,2243,177,49]
+                  - cell "@upstash/context7-mcp" [ref=e160] [box=514,2243,419,49]
+                  - cell "文档搜索工具，查询技术文档" [ref=e161] [box=933,2243,328,49]
+            - heading "自定义配置" [level=3] [ref=e162] [box=336,2340,669,32]
+            - paragraph [ref=e163] [box=336,2384,669,28]: 选择「自定义」后，需要填写：
+            - table [ref=e165] [box=337,2429,667,488]:
+              - rowgroup [ref=e166] [box=337,2429,667,48]:
+                - row "字段 必填 说明" [ref=e167] [box=337,2429,667,48]:
+                  - columnheader "字段" [ref=e168] [box=337,2429,180,48]
+                  - columnheader "必填" [ref=e169] [box=517,2429,115,48]
+                  - columnheader "说明" [ref=e170] [box=631,2429,373,48]
+              - rowgroup [ref=e171] [box=337,2477,667,439]:
+                - row "服务器 ID 是 唯一标识符" [ref=e172] [box=337,2477,667,49]:
+                  - cell "服务器 ID" [ref=e173] [box=337,2477,180,49]
+                  - cell "是" [ref=e174] [box=517,2477,115,49]
+                  - cell "唯一标识符" [ref=e175] [box=631,2477,373,49]
+                - row "名称 否 显示名称" [ref=e176] [box=337,2526,667,49]:
+                  - cell "名称" [ref=e177] [box=337,2526,180,49]
+                  - cell "否" [ref=e178] [box=517,2526,115,49]
+                  - cell "显示名称" [ref=e179] [box=631,2526,373,49]
+                - row "描述 否 功能说明" [ref=e180] [box=337,2575,667,49]:
+                  - cell "描述" [ref=e181] [box=337,2575,180,49]
+                  - cell "否" [ref=e182] [box=517,2575,115,49]
+                  - cell "功能说明" [ref=e183] [box=631,2575,373,49]
+                - row "传输类型 是 stdio / http / sse" [ref=e184] [box=337,2623,667,49]:
+                  - cell "传输类型" [ref=e185] [box=337,2623,180,49]
+                  - cell "是" [ref=e186] [box=517,2623,115,49]
+                  - cell "stdio / http / sse" [ref=e187] [box=631,2623,373,49]
+                - row "命令 是* stdio 类型必填" [ref=e188] [box=337,2672,667,49]:
+                  - cell "命令" [ref=e189] [box=337,2672,180,49]
+                  - cell "是*" [ref=e190] [box=517,2672,115,49]
+                  - cell "stdio 类型必填" [ref=e191] [box=631,2672,373,49]
+                - row "参数 否 命令行参数" [ref=e192] [box=337,2721,667,49]:
+                  - cell "参数" [ref=e193] [box=337,2721,180,49]
+                  - cell "否" [ref=e194] [box=517,2721,115,49]
+                  - cell "命令行参数" [ref=e195] [box=631,2721,373,49]
+                - row "URL 是* http/sse 类型必填" [ref=e196] [box=337,2770,667,49]:
+                  - cell "URL" [ref=e197] [box=337,2770,180,49]
+                  - cell "是*" [ref=e198] [box=517,2770,115,49]
+                  - cell "http/sse 类型必填" [ref=e199] [box=631,2770,373,49]
+                - row "Headers 否 http/sse 类型的请求头" [ref=e200] [box=337,2819,667,49]:
+                  - cell "Headers" [ref=e201] [box=337,2819,180,49]
+                  - cell "否" [ref=e202] [box=517,2819,115,49]
+                  - cell "http/sse 类型的请求头" [ref=e203] [box=631,2819,373,49]
+                - row "环境变量 否 传递给服务器的环境变量" [ref=e204] [box=337,2867,667,49]:
+                  - cell "环境变量" [ref=e205] [box=337,2867,180,49]
+                  - cell "否" [ref=e206] [box=517,2867,115,49]
+                  - cell "传递给服务器的环境变量" [ref=e207] [box=631,2867,373,49]
+            - heading "传输类型" [level=2] [ref=e208] [box=336,2957,669,36]
+            - heading "stdio（标准输入输出）" [level=3] [ref=e209] [box=336,3025,669,32]
+            - paragraph [ref=e210] [box=336,3069,669,28]: 最常用的类型，通过启动本地进程通信。
+            - generic [ref=e211] [box=336,3113,669,170]:
+              - button "Copy code" [ref=e213] [cursor=pointer] [box=963,3121,34,34]:
+                - img [ref=e214] [box=972,3130,16,16]
+              - generic [ref=e217] [box=348,3121,35,16]: json
+              - code [ref=e219] [box=353,3156,260,108]: "{ \"command\": \"uvx\", \"args\": [\"mcp-server-fetch\"], \"env\": {} }"
+            - paragraph [ref=e220] [box=336,3283,669,28]:
+              - strong [ref=e221] [box=336,3287,32,19]: 要求
+              - text: ：
+            - list [ref=e222] [box=360,3327,645,64]:
+              - listitem [ref=e223] [box=360,3327,645,28]:
+                - text: 需要安装对应的命令（如
+                - code [ref=e224] [box=541,3331,37,22]: uvx
+                - text: 、
+                - code [ref=e225] [box=594,3331,37,22]: npx
+                - text: ）
+              - listitem [ref=e226] [box=360,3363,645,28]: 服务器程序需要在 PATH 中
+            - heading "http" [level=3] [ref=e227] [box=336,3423,669,32]
+            - paragraph [ref=e228] [box=336,3467,669,28]: 通过 HTTP 协议与远程服务器通信。
+            - generic [ref=e229] [box=336,3511,669,125]:
+              - button "Copy code" [ref=e231] [cursor=pointer] [box=963,3519,34,34]:
+                - img [ref=e232] [box=972,3528,16,16]
+              - generic [ref=e235] [box=348,3519,35,16]: json
+              - code [ref=e237] [box=353,3553,302,63]: "{ \"url\": \"http://localhost:8080/mcp\" }"
+            - heading "sse（Server-Sent Events）" [level=3] [ref=e238] [box=336,3668,669,32]
+            - paragraph [ref=e239] [box=336,3712,669,28]: 通过 SSE 协议与服务器通信，支持实时推送。
+            - generic [ref=e240] [box=336,3756,669,125]:
+              - button "Copy code" [ref=e242] [cursor=pointer] [box=963,3764,34,34]:
+                - img [ref=e243] [box=972,3773,16,16]
+              - generic [ref=e246] [box=348,3764,35,16]: json
+              - code [ref=e248] [box=353,3798,302,63]: "{ \"url\": \"http://localhost:8080/sse\" }"
+            - heading "应用绑定" [level=2] [ref=e249] [box=336,3921,669,36]
+            - paragraph [ref=e250] [box=336,3973,669,28]: 每个 MCP 服务器可以独立控制启用的应用。
+            - heading "开关说明" [level=3] [ref=e251] [box=336,4033,669,32]
+            - table [ref=e253] [box=337,4077,667,244]:
+              - rowgroup [ref=e254] [box=337,4077,667,48]:
+                - row "开关 作用 配置文件路径" [ref=e255] [box=337,4077,667,48]:
+                  - columnheader "开关" [ref=e256] [box=337,4077,116,48]
+                  - columnheader "作用" [ref=e257] [box=452,4077,186,48]
+                  - columnheader "配置文件路径" [ref=e258] [box=639,4077,365,48]
+              - rowgroup [ref=e259] [box=337,4126,667,195]:
+                - row "Claude 同步到 Claude Code ~/.claude.json 的 mcpServers" [ref=e260] [box=337,4126,667,49]:
+                  - cell "Claude" [ref=e261] [box=337,4126,116,49]
+                  - cell "同步到 Claude Code" [ref=e262] [box=452,4126,186,49]
+                  - cell "~/.claude.json 的 mcpServers" [ref=e263] [box=639,4126,365,49]:
+                    - code [ref=e264] [box=655,4140,130,22]: ~/.claude.json
+                    - text: 的
+                    - code [ref=e265] [box=809,4140,96,22]: mcpServers
+                - row "Codex 同步到 Codex ~/.codex/config.toml 的 [mcp_servers]" [ref=e266] [box=337,4175,667,49]:
+                  - cell "Codex" [ref=e267] [box=337,4175,116,49]
+                  - cell "同步到 Codex" [ref=e268] [box=452,4175,186,49]
+                  - cell "~/.codex/config.toml 的 [mcp_servers]" [ref=e269] [box=639,4175,365,49]:
+                    - code [ref=e270] [box=655,4189,180,22]: ~/.codex/config.toml
+                    - text: 的
+                    - code [ref=e271] [box=860,4189,121,22]: "[mcp_servers]"
+                - row "Gemini 同步到 Gemini CLI ~/.gemini/settings.json 的 mcpServers" [ref=e272] [box=337,4223,667,49]:
+                  - cell "Gemini" [ref=e273] [box=337,4223,116,49]
+                  - cell "同步到 Gemini CLI" [ref=e274] [box=452,4223,186,49]
+                  - cell "~/.gemini/settings.json 的 mcpServers" [ref=e275] [box=639,4223,365,49]:
+                    - code [ref=e276] [box=655,4238,205,22]: ~/.gemini/settings.json
+                    - text: 的
+                    - code [ref=e277] [box=885,4238,96,22]: mcpServers
+                - row "OpenCode 同步到 OpenCode ~/.opencode/config.json 的 mcpServers" [ref=e278] [box=337,4272,667,49]:
+                  - cell "OpenCode" [ref=e279] [box=337,4272,116,49]
+                  - cell "同步到 OpenCode" [ref=e280] [box=452,4272,186,49]
+                  - cell "~/.opencode/config.json 的 mcpServers" [ref=e281] [box=639,4272,365,49]:
+                    - code [ref=e282] [box=655,4287,205,22]: ~/.opencode/config.json
+                    - text: 的
+                    - code [ref=e283] [box=885,4287,96,22]: mcpServers
+            - blockquote [ref=e284] [box=336,4346,669,88]:
+              - paragraph [ref=e285] [box=356,4354,649,56]:
+                - text: ⚠️
+                - strong [ref=e286] [box=382,4358,32,19]: 注意
+                - text: ：OpenClaw 暂不支持 MCP 服务器管理。MCP 功能目前仅支持 Claude、Codex、Gemini 和 OpenCode 四个应用。
+            - heading "开关实现机制" [level=3] [ref=e287] [box=336,4466,669,32]
+            - paragraph [ref=e288] [box=336,4510,669,28]: 当开启某个应用的开关时，CC Switch 会：
+            - list [ref=e289] [box=360,4554,645,100]:
+              - listitem [ref=e290] [box=360,4554,645,28]:
+                - strong [ref=e291] [box=360,4558,80,19]: 更新数据库
+                - text: ：将服务器的
+                - code [ref=e292] [box=541,4558,289,22]: apps.claude/codex/gemini/opencode
+                - text: 状态设为
+                - code [ref=e293] [box=903,4558,46,22]: "true"
+              - listitem [ref=e294] [box=360,4590,645,28]:
+                - strong [ref=e295] [box=360,4594,120,19]: 同步到 Live 配置
+                - text: ：将服务器配置写入对应应用的配置文件
+              - listitem [ref=e296] [box=360,4626,645,28]:
+                - strong [ref=e297] [box=360,4630,64,19]: 即时生效
+                - text: ：下次启动 CLI 工具时自动加载新的 MCP 服务器
+            - paragraph [ref=e298] [box=336,4670,669,28]: 当关闭某个应用的开关时，CC Switch 会：
+            - list [ref=e299] [box=360,4714,645,100]:
+              - listitem [ref=e300] [box=360,4714,645,28]:
+                - strong [ref=e301] [box=360,4718,80,19]: 更新数据库
+                - text: ：将对应应用状态设为
+                - code [ref=e302] [box=605,4718,54,22]: "false"
+              - listitem [ref=e303] [box=360,4750,645,28]:
+                - strong [ref=e304] [box=360,4754,120,19]: 从 Live 配置移除
+                - text: ：从应用配置文件中删除该服务器
+              - listitem [ref=e305] [box=360,4786,645,28]:
+                - strong [ref=e306] [box=360,4790,64,19]: 即时生效
+                - text: ：下次启动 CLI 工具时不再加载该 MCP 服务器
+            - heading "同步条件" [level=3] [ref=e307] [box=336,4846,669,32]
+            - paragraph [ref=e308] [box=336,4890,669,28]: MCP 服务器同步仅在对应应用已安装时执行：
+            - list [ref=e309] [box=360,4934,645,136]:
+              - listitem [ref=e310] [box=360,4934,645,28]:
+                - strong [ref=e311] [box=360,4938,55,19]: Claude
+                - text: ：需存在
+                - code [ref=e312] [box=484,4938,96,22]: ~/.claude/
+                - text: 目录或
+                - code [ref=e313] [box=637,4938,130,22]: ~/.claude.json
+                - text: 文件
+              - listitem [ref=e314] [box=360,4970,645,28]:
+                - strong [ref=e315] [box=360,4974,50,19]: Codex
+                - text: ：需存在
+                - code [ref=e316] [box=479,4974,88,22]: ~/.codex/
+                - text: 目录
+              - listitem [ref=e317] [box=360,5006,645,28]:
+                - strong [ref=e318] [box=360,5010,55,19]: Gemini
+                - text: ：需存在
+                - code [ref=e319] [box=483,5010,96,22]: ~/.gemini/
+                - text: 目录
+              - listitem [ref=e320] [box=360,5042,645,28]:
+                - strong [ref=e321] [box=360,5046,83,19]: OpenCode
+                - text: ：需存在
+                - code [ref=e322] [box=512,5046,113,22]: ~/.opencode/
+                - text: 目录
+            - blockquote [ref=e323] [box=336,5086,669,60]:
+              - paragraph [ref=e324] [box=356,5094,649,28]:
+                - text: 💡
+                - strong [ref=e325] [box=377,5098,32,19]: 提示
+                - text: ：如果某个 CLI 工具未安装，开启对应开关不会报错，但配置不会写入。
+            - paragraph [ref=e326] [box=336,5162,669,28]: 关闭开关后，配置会从文件中移除。
+            - heading "编辑服务器" [level=2] [ref=e327] [box=336,5230,669,36]
+            - list [ref=e328] [box=360,5282,645,100]:
+              - listitem [ref=e329] [box=360,5282,645,28]: 点击服务器行右侧的「编辑」按钮
+              - listitem [ref=e330] [box=360,5318,645,28]: 修改配置
+              - listitem [ref=e331] [box=360,5354,645,28]: 点击「保存」
+            - paragraph [ref=e332] [box=336,5398,669,28]: 修改会立即同步到已启用的应用配置文件。
+            - heading "删除服务器" [level=2] [ref=e333] [box=336,5466,669,36]
+            - list [ref=e334] [box=360,5518,645,64]:
+              - listitem [ref=e335] [box=360,5518,645,28]: 点击服务器行右侧的「删除」按钮
+              - listitem [ref=e336] [box=360,5554,645,28]: 确认删除
+            - paragraph [ref=e337] [box=336,5598,669,28]: 删除后，配置会从所有应用的配置文件中移除。
+            - heading "导入现有配置" [level=2] [ref=e338] [box=336,5666,669,36]
+            - paragraph [ref=e339] [box=336,5718,669,28]: 如果你已经在 CLI 工具中配置了 MCP 服务器，可以导入到 CC Switch：
+            - list [ref=e340] [box=360,5762,645,100]:
+              - listitem [ref=e341] [box=360,5762,645,28]: 点击「导入」按钮
+              - listitem [ref=e342] [box=360,5798,645,28]: 选择要导入的应用（Claude/Codex/Gemini/OpenCode）
+              - listitem [ref=e343] [box=360,5834,645,28]: CC Switch 会读取现有配置并导入
+            - heading "配置文件格式" [level=2] [ref=e344] [box=336,5902,669,36]
+            - heading "Claude (~/.claude.json)" [level=3] [ref=e345] [box=336,5970,669,32]:
+              - text: Claude (
+              - code [ref=e346] [box=433,5979,130,22]: ~/.claude.json
+              - text: )
+            - generic [ref=e347] [box=336,6014,669,237]:
+              - button "Copy code" [ref=e349] [cursor=pointer] [box=963,6022,34,34]:
+                - img [ref=e350] [box=972,6031,16,16]
+              - generic [ref=e353] [box=348,6022,35,16]: json
+              - code [ref=e355] [box=353,6057,286,175]: "{ \"mcpServers\": { \"mcp-fetch\": { \"command\": \"uvx\", \"args\": [\"mcp-server-fetch\"] } } }"
+            - heading "Codex (~/.codex/config.toml)" [level=3] [ref=e356] [box=336,6283,669,32]:
+              - text: Codex (
+              - code [ref=e357] [box=426,6292,180,22]: ~/.codex/config.toml
+              - text: )
+            - generic [ref=e358] [box=336,6327,669,125]:
+              - button "Copy code" [ref=e360] [cursor=pointer] [box=963,6335,34,34]:
+                - img [ref=e361] [box=972,6344,16,16]
+              - generic [ref=e364] [box=348,6335,37,16]: toml
+              - code [ref=e366] [box=353,6369,227,63]: "[mcp_servers.mcp-fetch] command = \"uvx\" args = [\"mcp-server-fetch\"]"
+            - heading "Gemini (~/.gemini/settings.json)" [level=3] [ref=e367] [box=336,6484,669,32]:
+              - text: Gemini (
+              - code [ref=e368] [box=432,6493,205,22]: ~/.gemini/settings.json
+              - text: )
+            - generic [ref=e369] [box=336,6528,669,237]:
+              - button "Copy code" [ref=e371] [cursor=pointer] [box=963,6536,34,34]:
+                - img [ref=e372] [box=972,6545,16,16]
+              - generic [ref=e375] [box=348,6536,35,16]: json
+              - code [ref=e377] [box=353,6570,286,175]: "{ \"mcpServers\": { \"mcp-fetch\": { \"command\": \"uvx\", \"args\": [\"mcp-server-fetch\"] } } }"
+            - heading "常见问题" [level=2] [ref=e378] [box=336,6805,669,36]
+            - heading "服务器启动失败" [level=3] [ref=e379] [box=336,6873,669,32]
+            - paragraph [ref=e380] [box=336,6917,669,28]: 检查：
+            - list [ref=e381] [box=360,6961,645,100]:
+              - listitem [ref=e382] [box=360,6961,645,28]:
+                - text: 命令是否正确安装（如
+                - code [ref=e383] [box=525,6964,37,22]: uvx
+                - text: ）
+              - listitem [ref=e384] [box=360,6997,645,28]: 命令是否在 PATH 中
+              - listitem [ref=e385] [box=360,7033,645,28]: 参数是否正确
+            - heading "配置不生效" [level=3] [ref=e386] [box=336,7093,669,32]
+            - paragraph [ref=e387] [box=336,7137,669,28]: 确保：
+            - list [ref=e388] [box=360,7181,645,64]:
+              - listitem [ref=e389] [box=360,7181,645,28]: 对应应用的开关已开启
+              - listitem [ref=e390] [box=360,7217,645,28]: 重启了 CLI 工具
+          - generic [ref=e391] [box=336,7325,669,158]:
+            - generic [ref=e392] [box=336,7349,669,20]:
+              - link "编辑此页面" [ref=e394] [cursor=pointer] [box=336,7349,92,20]:
+                - /url: https://github.com/farion1231/cc-switch/edit/main/docs/user-manual/zh/3-extensions/3.1-mcp.md
+                - img [ref=e395] [box=336,7351,16,16]
+                - text: 编辑此页面
+              - generic [ref=e398] [box=834,7349,171,20]:
+                - img [ref=e399] [box=834,7351,16,16]
+                - text: 最后更新：2026-05-16
+            - generic [ref=e402] [box=336,7401,669,82]:
+              - button "上一页 扩展功能" [ref=e403] [cursor=pointer] [box=336,7401,326,82]:
+                - generic [ref=e404] [box=353,7418,62,20]:
+                  - img [ref=e405] [box=353,7420,16,16]
+                  - text: 上一页
+                - generic [ref=e407] [box=353,7442,64,24]: 扩展功能
+              - button "下一页 Prompts 提示词" [ref=e408] [cursor=pointer] [box=678,7401,326,82]:
+                - generic [ref=e409] [box=926,7418,62,20]:
+                  - text: 下一页
+                  - img [ref=e410] [box=972,7420,16,16]
+                - generic [ref=e412] [box=872,7442,116,24]: Prompts 提示词
+    - contentinfo [ref=e413] [box=0,7507,1021,450]:
+      - generic [ref=e414] [box=0,7588,1021,289]:
+        - generic [ref=e415] [box=24,7588,973,172]:
+          - generic [ref=e416] [box=24,7588,156,172]:
+            - generic [ref=e417] [box=24,7588,156,32]:
+              - img "CC Switch Logo" [ref=e418] [box=24,7588,32,32]
+              - generic [ref=e419] [box=64,7590,91,28]: CC Switch
+            - paragraph [ref=e420] [box=24,7636,156,40]: 统一管理你的 AI 编程工具工作流
+            - link "GitHub" [ref=e422] [cursor=pointer] [box=24,7700,20,20]:
+              - /url: https://github.com/farion1231/cc-switch
+              - img [ref=e423] [box=24,7700,20,20]
+          - generic [ref=e426] [box=228,7588,156,172]:
+            - heading "产品" [level=4] [ref=e427] [box=228,7588,156,24]
+            - list [ref=e428] [box=228,7628,156,60]:
+              - listitem [ref=e429] [box=228,7628,156,24]:
+                - link "功能" [ref=e430] [cursor=pointer] [box=228,7632,28,17]:
+                  - /url: /zh/#features
+              - listitem [ref=e431] [box=228,7664,156,24]:
+                - link "下载" [ref=e432] [cursor=pointer] [box=228,7668,28,17]:
+                  - /url: https://github.com/farion1231/cc-switch/releases
+          - generic [ref=e433] [box=432,7588,156,172]:
+            - heading "资源" [level=4] [ref=e434] [box=432,7588,156,24]
+            - list [ref=e435] [box=432,7628,156,96]:
+              - listitem [ref=e436] [box=432,7628,156,24]:
+                - link "文档" [ref=e437] [cursor=pointer] [box=432,7632,28,17]:
+                  - /url: /zh/docs
+              - listitem [ref=e438] [box=432,7664,156,24]:
+                - link "攻略" [ref=e439] [cursor=pointer] [box=432,7668,28,17]:
+                  - /url: /zh/tutorials
+              - listitem [ref=e440] [box=432,7700,156,24]:
+                - link "更新日志" [ref=e441] [cursor=pointer] [box=432,7704,56,17]:
+                  - /url: /zh/changelog
+          - generic [ref=e442] [box=636,7588,156,172]:
+            - heading "社区" [level=4] [ref=e443] [box=636,7588,156,24]
+            - list [ref=e444] [box=636,7628,156,132]:
+              - listitem [ref=e445] [box=636,7628,156,24]:
+                - link "GitHub" [ref=e446] [cursor=pointer] [box=636,7632,46,17]:
+                  - /url: https://github.com/farion1231/cc-switch
+              - listitem [ref=e447] [box=636,7664,156,24]:
+                - link "贡献指南" [ref=e448] [cursor=pointer] [box=636,7668,56,17]:
+                  - /url: https://github.com/farion1231/cc-switch#contributing
+              - listitem [ref=e449] [box=636,7700,156,24]:
+                - link "问题反馈" [ref=e450] [cursor=pointer] [box=636,7704,56,17]:
+                  - /url: https://github.com/farion1231/cc-switch/issues
+              - listitem [ref=e451] [box=636,7736,156,24]:
+                - link "赞助商" [ref=e452] [cursor=pointer] [box=636,7740,42,17]:
+                  - /url: /zh/sponsors
+        - generic [ref=e453] [box=24,7824,973,53]:
+          - paragraph [ref=e454] [box=24,7857,263,20]: © 2025 CC Switch. 基于 MIT 协议开源。
+          - paragraph [ref=e455] [box=771,7857,225,20]: Made with ❤️ by CC Switch Team

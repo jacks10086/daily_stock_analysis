@@ -179,6 +179,35 @@ class TestGetUsSectorPerformance(unittest.TestCase):
         self.assertEqual(result["bottom"][0]["ticker"], "XLK")
 
     @patch("yfinance.download")
+    def test_successful_fetch_flat_format(self, mock_download: MagicMock) -> None:
+        """Verify return structure with flat column format (Close_XLK style)."""
+        import pandas as pd
+
+        # 扁平格式：列名为 "Close_XLK", "Volume_XLK" 等
+        mock_df = pd.DataFrame(
+            {
+                "Close_XLK": [218.0, 220.0],
+                "Volume_XLK": [1_000_000, 2_000_000],
+                "Close_SMH": [150.0, 155.0],
+                "Volume_SMH": [500_000, 800_000],
+            },
+            index=pd.date_range("2026-07-03", periods=2),
+        )
+
+        mock_download.return_value = mock_df
+
+        result = get_us_sector_performance()
+        self.assertIsNotNone(result)
+        self.assertIn("top", result)
+        self.assertIn("bottom", result)
+        self.assertIn("all", result)
+        self.assertIn("timestamp", result)
+        # XLK change = (220-218)/218*100 = 0.92%, SMH = (155-150)/150*100 = 3.33%
+        # So SMH should be top, XLK bottom
+        self.assertEqual(result["top"][0]["ticker"], "SMH")
+        self.assertEqual(result["bottom"][0]["ticker"], "XLK")
+
+    @patch("yfinance.download")
     def test_empty_dataframe(self, mock_download: MagicMock) -> None:
         """Verify None is returned for empty response."""
         import pandas as pd
