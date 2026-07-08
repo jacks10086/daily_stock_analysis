@@ -148,8 +148,8 @@ class TestGetUsSectorPerformance(unittest.TestCase):
     """Test the get_us_sector_performance function."""
 
     @patch("yfinance.download")
-    def test_successful_fetch(self, mock_download: MagicMock) -> None:
-        """Verify return structure with successful yfinance data."""
+    def test_successful_fetch_multiindex_format(self, mock_download: MagicMock) -> None:
+        """Verify return structure with MultiIndex format (yfinance sometimes returns this)."""
         import pandas as pd
 
         mock_df = pd.DataFrame(
@@ -180,7 +180,10 @@ class TestGetUsSectorPerformance(unittest.TestCase):
 
     @patch("yfinance.download")
     def test_successful_fetch_flat_format(self, mock_download: MagicMock) -> None:
-        """Verify return structure with flat column format (Close_XLK style)."""
+        """Verify return structure with flat column format (Close_XLK style).
+
+        This is the ACTUAL format yfinance returns in production as of 2024-2025.
+        """
         import pandas as pd
 
         # 扁平格式：列名为 "Close_XLK", "Volume_XLK" 等
@@ -208,6 +211,31 @@ class TestGetUsSectorPerformance(unittest.TestCase):
         self.assertEqual(result["bottom"][0]["ticker"], "XLK")
 
     @patch("yfinance.download")
+    def test_real_world_flat_format_14_tickers(self, mock_download: MagicMock) -> None:
+        """Test with real-world flat format data for all 14 tickers.
+
+        This simulates the actual yfinance response that caused the production bug.
+        """
+        import pandas as pd
+
+        # 模拟真实 yfinance 返回的扁平格式（14个 ticker × 5列 OHLCV）
+        data = {}
+        tickers = ["XLK", "XLF", "XLV", "XLE", "XLY", "XLP", "XLU", "XLI", "XLB", "XLRE", "XLC", "SMH", "XSD", "XAR"]
+
+        for ticker in tickers:
+            data[f"Close_{ticker}"] = [100.0, 101.0]
+            data[f"Volume_{ticker}"] = [1_000_000, 1_500_000]
+
+        mock_df = pd.DataFrame(data, index=pd.date_range("2026-07-03", periods=2))
+        mock_download.return_value = mock_df
+
+        result = get_us_sector_performance()
+        self.assertIsNotNone(result)
+        self.assertEqual(len(result["all"]), 14)
+        self.assertEqual(len(result["top"]), 5)
+        self.assertEqual(len(result["bottom"]), 5)
+
+    @patch("yfinance.download")
     def test_empty_dataframe(self, mock_download: MagicMock) -> None:
         """Verify None is returned for empty response."""
         import pandas as pd
@@ -215,6 +243,30 @@ class TestGetUsSectorPerformance(unittest.TestCase):
         mock_download.return_value = pd.DataFrame()
         result = get_us_sector_performance()
         self.assertIsNone(result)
+
+    @patch("yfinance.download")
+    def test_partial_data_some_tickers_missing(self, mock_download: MagicMock) -> None:
+        """Verify handling when some tickers have missing data."""
+        import pandas as pd
+
+        # 只有 2 个 ticker 有数据
+        mock_df = pd.DataFrame(
+            {
+                "Close_XLK": [218.0, 220.0],
+                "Volume_XLK": [1_000_000, 2_000_000],
+                "Close_SMH": [150.0, 155.0],
+                "Volume_SMH": [500_000, 800_000],
+                # 其他 12 个 ticker 没有数据
+            },
+            index=pd.date_range("2026-07-03", periods=2),
+        )
+
+        mock_download.return_value = mock_df
+
+        result = get_us_sector_performance()
+        self.assertIsNotNone(result)
+        # 只有 2 个有效 ticker
+        self.assertEqual(len(result["all"]), 2)
 
 
 if __name__ == "__main__":
