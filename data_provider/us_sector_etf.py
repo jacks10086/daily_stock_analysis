@@ -94,7 +94,17 @@ def get_us_sector_performance(
             - bottom: 领跌板块列表（按涨跌幅升序）
             - all: 全部板块（按涨跌幅降序）
         ETF 数据获取失败或所有数据为空时返回 None
+
+    Environment:
+        USE_MOCK_SECTOR_DATA=1  使用模拟数据（用于本地测试）
     """
+    import os
+
+    # 模拟数据模式：用于本地测试 Web UI
+    if os.environ.get("USE_MOCK_SECTOR_DATA") == "1":
+        logger.info("[USSector] 使用模拟数据模式")
+        return _get_mock_sector_data()
+
     import yfinance as yf
 
     tickers = list(US_SECTOR_ETFS.keys())
@@ -122,15 +132,29 @@ def get_us_sector_performance(
 
         sectors = []
         # yfinance.download 返回两种格式：
-        # 1. MultiIndex: columns.levels[1] 包含 ticker
+        # 1. MultiIndex: columns.levels[0]=Ticker, columns.levels[1]=PriceField
         # 2. 扁平格式: 列名为 "Close_XLK", "Volume_XLK" 等
         is_multi_index = hasattr(df.columns, "levels") and len(df.columns.levels) > 1
 
+        # 动态检测 ticker 在 MultiIndex 的哪个 level（兼容不同 yfinance 版本）
+        ticker_level = 0
+        if is_multi_index:
+            ticker_set = set(tickers)
+            sample_tickers_in_level_0 = ticker_set.intersection(df.columns.levels[0])
+            sample_tickers_in_level_1 = ticker_set.intersection(df.columns.levels[1])
+            if sample_tickers_in_level_0:
+                ticker_level = 0
+            elif sample_tickers_in_level_1:
+                ticker_level = 1
+            else:
+                # 未检测到 ticker 列，按扁平格式处理
+                is_multi_index = False
+
         for ticker in tickers:
             try:
-                if is_multi_index and ticker in df.columns.levels[1]:
+                if is_multi_index:
                     # MultiIndex 格式
-                    ticker_df = df.xs(ticker, level=1, axis=1)
+                    ticker_df = df.xs(ticker, level=ticker_level, axis=1)
                     close_col = "Close"
                     volume_col = "Volume"
                 else:
@@ -240,3 +264,55 @@ def format_sector_ranking_summary(ranking: List[Dict], limit: int = 3) -> str:
         else:
             parts.append(ticker)
     return ", ".join(parts)
+
+
+def _get_mock_sector_data() -> Dict[str, Any]:
+    """
+    生成模拟板块数据（用于本地 Web UI 测试）。
+
+    使用场景：
+        - 本地 IP 被 yfinance 限流时
+        - 开发调试板块轮动功能
+        - Web UI 样式验证
+
+    启用方式：
+        export USE_MOCK_SECTOR_DATA=1
+        或在 .env 中添加 USE_MOCK_SECTOR_DATA=1
+    """
+    from datetime import datetime
+
+    # 模拟真实市场数据（2025-07-08 市场风格：科技领涨，防御/能源领跌）
+    mock_data = [
+        ("SMH", 260.50, 255.00, 250.00),   # 半导体: +2.16%, 5日 +4.2%
+        ("XSD", 185.20, 182.50, 178.00),   # 电子半导体: +1.48%, 5日 +4.0%
+        ("XLK", 210.80, 209.50, 205.00),   # 科技: +0.62%, 5日 +2.8%
+        ("XLY", 198.50, 197.00, 192.00),   # 可选消费: +0.76%, 5日 +3.4%
+        ("XLI", 125.30, 124.80, 122.50),   # 工业: +0.40%, 5日 +2.3%
+        ("XLV", 142.00, 141.50, 140.00),   # 医疗: +0.35%, 5日 +1.4%
+        ("XLP", 82.50, 82.30, 81.00),      # 必需消费: +0.24%, 5日 +1.9%
+        ("XLC", 78.20, 78.00, 77.00),      # 通信服务: +0.26%, 5日 +1.6%
+        ("XLF", 48.80, 48.90, 48.50),      # 金融: -0.20%, 5日 +0.6%
+        ("XLB", 92.50, 93.00, 91.00),      # 材料: -0.54%, 5日 +1.6%
+        ("XLRE", 88.30, 88.80, 87.50),     # 房地产: -0.56%, 5日 +0.9%
+        ("XLU", 72.10, 72.50, 71.50),      # 公用事业: -0.55%, 5日 +0.8%
+        ("XAR", 138.50, 139.20, 136.00),   # 航天国防: -0.50%, 5日 +1.8%
+        ("XLE", 85.20, 86.50, 84.00),      # 能源: -1.50%, 5日 +1.4%
+    ]
+
+    sectors = []
+    for ticker, close, prev_close, close_5d in mock_data:
+        info = US_SECTOR_ETFS.get(ticker, {"name": ticker, "category": "core"})
+        item = _build_sector_item(
+            ticker, info, close=close, prev_close=prev_close, close_5d=close_5d
+        )
+        sectors.append(item)
+
+    # 按涨跌幅排序
+    sectors.sort(key=lambda x: x["change_pct"], reverse=True)
+
+    return {
+        "timestamp": datetime.now().isoformat(),
+        "top": sectors[:5],
+        "bottom": list(reversed(sectors[-5:])),
+        "all": sectors,
+    }
